@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>
+		Jquery: intro
+	</title>
+</head>
+<body>
+	<button id = "click-button-js">Click Me JS</button>
+	<button id = "click-button-jq">Click Me JQUERY</button>
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+	var button = document.getElementById('click-button-js');
+
+	button.addEventListener('click', function() {
+		alert('You Click me via vanila javascript');
+	});
+</script>
+<script>
+	$(document).ready(function() {
+		$('#click-button-jq').click(function() {
+			alert('You click me via Jquery');
+		})
+	})
+</script>
+</html>

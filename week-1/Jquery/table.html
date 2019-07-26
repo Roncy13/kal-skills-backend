@@ -1,0 +1,127 @@
+<html>
+<head>
+	<title>
+		Jquery: Table
+	</title>
+</head>
+<body>
+	JS:
+	<table>
+		<thead>
+			<th>
+				ID
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				Username
+			</th>
+			<th>
+				Email
+			</th>
+		</thead>
+		<tbody id = "javascript">
+		</tbody>
+	</table>
+	<br><br><br>
+	JQUERY:
+	<br>
+	<table>
+		<thead>
+			<th>
+				ID
+			</th>
+			<th>
+				Name
+			</th>
+			<th>
+				Username
+			</th>
+			<th>
+				Email
+			</th>
+		</thead>
+		<tbody id = "jquery">
+		</tbody>
+	</table>
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+	 var xhttp = new XMLHttpRequest();
+
+	 xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	var data = JSON.parse(this.responseText);
+	    	var table = document.getElementById('javascript');
+
+	    	data.forEach(function(row) {
+	    		var tr = document.createElement('tr')
+	    			,ID = document.createElement('td')
+	    			,username = document.createElement('td')
+	    			,name = document.createElement('td')
+	    			,email = document.createElement('td')
+
+	    		// Assigning Values row to variables
+
+	    		ID.innerHTML = row.id
+	    		username.innerHTML = row.username
+	    		email.innerHTML = row.email
+	    		name.innerHTML = row.name
+
+	    		// Inserting TD elements in TR
+
+	    		tr.append(ID);
+	    		tr.append(username);
+	    		tr.append(name);
+	    		tr.append(email);
+
+	    		// Inserting TR element in Table Body
+	    		table.append(tr);
+	    	})
+	    }
+	  };
+	  xhttp.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+	  xhttp.send();
+</script>
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			method: "GET",
+			url: "https://jsonplaceholder.typicode.com/users",
+			success: function(data) {
+				
+				var table = $("#jquery");
+
+				data.forEach(function(row) {
+		    		var tr = $("<tr></tr>")
+		    			,ID = $("<td></td>")
+		    			,username = $("<td></td>")
+		    			,name = $("<td></td>")
+		    			,email = $("<td></td>")
+
+		    		// Assigning Values row to variables
+
+		    		ID.html(row.id);
+		    		username.html(row.username);
+		    		email.html(row.email);
+		    		name.html(row.name);
+
+		    		// Inserting TD elements in TR`
+
+		    		tr.append(ID);
+		    		tr.append(username);
+		    		tr.append(name);
+		    		tr.append(email);
+
+		    		// Inserting TR element in Table Body
+		    		table.append(tr);
+		    	})
+			}
+		})
+	})
+</script>
+</html>

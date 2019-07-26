@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>
+		Jquery: On Change
+	</title>
+</head>
+<body>
+	JS:
+	<select id = "javascript">
+		<option value = "1">One</option>
+		<option value = "2">Two</option>
+		<option value = "3">Three</option>
+		<option value = "4">Four</option>
+		<option value = "5">Five</option>
+	</select>
+
+	<br><br><br>
+	JQUERY:
+	<select id = "jquery">
+		<option value = "1">One</option>
+		<option value = "2">Two</option>
+		<option value = "3">Three</option>
+		<option value = "4">Four</option>
+		<option value = "5">Five</option>
+	</select>
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+	var select = document.getElementById('javascript');
+
+	select.addEventListener('change', function(event) {
+		var index = select.selectedIndex;
+		var value = select.options[index].value;
+		var text = select.options[index].text;
+		console.log('id: ' + value + " text: " + text);
+		alert('You Change me via vanilla javascript');
+	});
+</script>
+<script>
+	$(document).ready(function() {
+		$('#jquery').change(function(event) {
+			var text =  $("#jquery :selected").text();
+			var value =  $("#jquery :selected").val();
+			console.log('id: ' + value + " text: " + text);
+			alert('You Change me via Jquery');
+		})
+	})
+</script>
+</html>
